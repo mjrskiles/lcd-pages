@@ -91,7 +91,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   LCD_Init(&huart4);
   HAL_Delay(100);
-  LCD_Line2();
+//  LCD_Line2();
   HAL_UART_Transmit(&huart4, startup_buffer, 9, 500);
   /* USER CODE END 2 */
 
