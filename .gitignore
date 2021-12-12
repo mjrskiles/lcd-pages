@@ -1,0 +1,7 @@
+
+*.d
+*.o
+*.su
+*.su
+*.o
+Debug/lcd-pages.bin

@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "lcd16x2.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,7 +43,7 @@
 UART_HandleTypeDef huart4;
 
 /* USER CODE BEGIN PV */
-uint8_t startup_buffer[] = { 'h','e','l','l','o',' ','a','r','m'};
+uint8_t startup_buffer[] = { 'h','e','l','l','o',' ','A','R','M'};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -89,11 +89,10 @@ int main(void)
   MX_GPIO_Init();
   MX_UART4_Init();
   /* USER CODE BEGIN 2 */
-  HAL_Delay(1000);
-    uint8_t buf[] = { 0xfe, 0x01 };
-    HAL_UART_Transmit(&huart4, buf, 2, 500);
-    HAL_Delay(100);
-    HAL_UART_Transmit(&huart4, startup_buffer, 9, 500);
+  LCD_Init(&huart4);
+  HAL_Delay(100);
+  LCD_Line2();
+  HAL_UART_Transmit(&huart4, startup_buffer, 9, 500);
   /* USER CODE END 2 */
 
   /* Infinite loop */
